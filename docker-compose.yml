@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  frontend:
+    container_name: frontend_container
+    build:
+      context: ./
+      dockerfile: ./docker/frontend/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "80:80"
+  api:
+    build:
+      context: ./
+      dockerfile: ./docker/api/Dockerfile
+    container_name: api_container
+    working_dir: /app
+    restart: unless-stopped
+    ports:
+      - "3001:3001"

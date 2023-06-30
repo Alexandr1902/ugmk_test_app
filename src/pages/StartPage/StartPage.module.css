@@ -1,0 +1,28 @@
+.startPageWrapper {
+  width: 100%;
+}
+
+.titleWrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-bottom: 50px;
+  column-gap: 10px;
+  padding: 10px 15px;
+}
+
+.chartWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  height: 500px;
+  width: 100%;
+}
+
+.bar {
+  cursor: pointer;
+}
