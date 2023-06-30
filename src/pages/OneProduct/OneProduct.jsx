@@ -16,10 +16,13 @@ export const OneProduct = () => {
   const location = useLocation();
   const { data, filter } = location.state;
 
-  const dataDetails = [
-    { name: 'Продукт 1', value: Math.floor(data['1'].product1) },
-    { name: 'Продукт 2', value: Math.floor(data['2'].product2) },
-  ];
+  const dataDetails = useMemo(() => {
+    return [
+      { name: 'Продукт 1', value: Math.floor(data['1'].product1) },
+      { name: 'Продукт 2', value: Math.floor(data['2'].product2) },
+    ]
+  });
+  
   return (
     <div className={styles.oneProductWrapper}>
 

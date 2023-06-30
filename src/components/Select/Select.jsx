@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './Select.module.css';
 
-
 export const Select = ({saveFilter, selectData, filterItem}) => {
   return (
     <select

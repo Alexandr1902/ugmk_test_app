@@ -24,8 +24,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "json-server --watch products.json --port 3001",
-    "project": "concurrently \"npm start\" \"json-server --watch products.json --port 3001\"",
-    "serve": "json-server --watch products.json --port 3001 --host 0.0.0.0"
+    "serve": "json-server --watch products.json --port 3001 --host 0.0.0.0",
+    "start:dev": "concurrently \"npm start\" \"json-server --watch products.json --port 3001\""
   },
   "eslintConfig": {
     "extends": [

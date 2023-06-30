@@ -68,6 +68,7 @@ export const getData = (data, filter, factoryNumber = '', active = false) => {
 
   result = Object.entries(reducedObj).map(item => item[1]);
 
+  // Переводим все значения из киллограмм в тонны
   result.forEach((element) => {
     element['1'].total /= 1000;
     element['2'].total /= 1000;
