@@ -1,3 +1,4 @@
+import React, { useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
   Cell,
@@ -22,7 +23,7 @@ export const OneProduct = () => {
       { name: 'Продукт 2', value: Math.floor(data['2'].product2) },
     ]
   });
-  
+
   return (
     <div className={styles.oneProductWrapper}>
 
