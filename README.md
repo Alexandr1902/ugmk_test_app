@@ -13,8 +13,6 @@
 * moment
 * axios
 * json-server
-* moment
-* json-server
 
 ## Файл .env.example
 
