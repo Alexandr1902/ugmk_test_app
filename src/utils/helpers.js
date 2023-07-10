@@ -23,50 +23,53 @@ const getMonthRus = (date) => {
 export const getData = (data, filter, factoryNumber = '', active = false) => {
   let result = [];
 
-  const filteredData = data.filter((obj) => obj.date !== null);
-  const reducedObj = filteredData.reduce((acc, { factory_id, product1, product2, date }) => {
-      const month = getMonthRus(date);
-      const monthNumber = getMonth(date);
-      let value;
+  const filteredData = data?.filter((obj) => obj.date !== null);
+  const reducedObj = filteredData?.reduce((acc, { factory_id, product1, product2, date }) => {
+    const month = getMonthRus(date);
+    const monthNumber = getMonth(date);
+    let value;
 
-      if (filter === 'all') {
-        value = product1 + product2;
-      } else if (filter === 'product1') {
-        value = product1;
-      } else if (filter === 'product2') {
-        value = product2;
-      }
+    if (filter === 'all') {
+      value = product1 + product2;
+    } else if (filter === 'product1') {
+      value = product1;
+    } else if (filter === 'product2') {
+      value = product2;
+    }
 
-      if (!acc[monthNumber]) {
-        acc[monthNumber] = {
-          [factory_id]: {
-            total: 0,
-            product1: 0,
-            product2: 0,
-          },
-          monthNumber,
-          month,
-        };
-      }
-
-      if (!acc[monthNumber][factory_id]) {
-        acc[monthNumber][factory_id] = {
+    if (!acc[monthNumber]) {
+      acc[monthNumber] = {
+        [factory_id]: {
           total: 0,
           product1: 0,
           product2: 0,
-        };
-      }
+        },
+        monthNumber,
+        month,
+      };
+    }
 
-      acc[monthNumber][factory_id].total += value;
-      acc[monthNumber][factory_id].product1 += product1;
-      acc[monthNumber][factory_id].product2 += product2;
+    if (!acc[monthNumber][factory_id]) {
+      acc[monthNumber][factory_id] = {
+        total: 0,
+        product1: 0,
+        product2: 0,
+      };
+    }
 
-      return acc;
-    },
+    acc[monthNumber][factory_id].total += value;
+    acc[monthNumber][factory_id].product1 += product1;
+    acc[monthNumber][factory_id].product2 += product2;
+
+    return acc;
+  },
     {}
   );
 
-  result = Object.entries(reducedObj).map(item => item[1]);
+  if (reducedObj) {
+    result = Object.entries(reducedObj)?.map(item => item[1]);
+  }
+
 
   // Переводим все значения из киллограмм в тонны
   result.forEach((element) => {
@@ -78,7 +81,7 @@ export const getData = (data, filter, factoryNumber = '', active = false) => {
     element['2'].product2 /= 1000;
   });
 
-  if(factoryNumber === FACTORY_NUMBER[0] && active) {
+  if (factoryNumber === FACTORY_NUMBER[0] && active) {
     result = result.map(item => {
       return {
         1: item[FACTORY_NUMBER[0]],
@@ -88,7 +91,7 @@ export const getData = (data, filter, factoryNumber = '', active = false) => {
     });
   }
 
-  if(factoryNumber === FACTORY_NUMBER[1] && active) {
+  if (factoryNumber === FACTORY_NUMBER[1] && active) {
     result = result.map(item => {
       return {
         2: item[FACTORY_NUMBER[1]],
@@ -111,6 +114,6 @@ export const goOneProductPage = (data, navigate, filter) => {
   });
 };
 
-export const returnStartPage = (navigate,filter) => {
+export const returnStartPage = (navigate, filter) => {
   navigate(`/${filter}`);
 }

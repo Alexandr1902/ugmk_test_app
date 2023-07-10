@@ -14,6 +14,7 @@ import { Select } from '../../components/Select/Select';
 import { BAR_COLOR, FACTORY_NUMBER } from '../../utils/constants';
 import { getData, goOneProductPage } from '../../utils/helpers';
 import styles from './StartPage.module.css';
+import { ErrorPage } from '../ErrorPage/ErrorPage';
 
 export const StartPage = ({selectData}) => {
   const navigate = useNavigate();
@@ -61,6 +62,8 @@ export const StartPage = ({selectData}) => {
     setSelectFirstFactory(!selectFirstFactory);
     setSelectSecondFactory(!selectSecondFactory);
   }
+
+  if(!state) return <ErrorPage />
 
   return (
     <div className={styles.startPageWrapper}>
